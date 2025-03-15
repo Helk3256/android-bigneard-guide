@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
             checkAnswer(false)
         }
         nextButton.setOnClickListener{
-            quizViewModel.moveToNext()
+           // quizViewModel.moveToNext()
             updateQuestion()
             Block_buttons(quizViewModel.currentIndex)
         }
