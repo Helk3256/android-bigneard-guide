@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import kotlin.math.abs
 import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 
 private const val TAG = "MainActivity"
 private const val KEY_INDEX = "index"
@@ -61,20 +62,23 @@ class MainActivity : AppCompatActivity() {
             checkAnswer(false)
         }
         nextButton.setOnClickListener{
-            quizViewModel.moveToNext()
+           // quizViewModel.moveToNext()
             updateQuestion()
-            Block_buttons(currentIndex)
+            Block_buttons(quizViewModel.currentIndex)
         }
         questionTextView.setOnClickListener{
             quizViewModel.moveToNext()
             updateQuestion()
-            Block_buttons(currentIndex)
+            Block_buttons(quizViewModel.currentIndex)
         }
         backButton.setOnClickListener{
             quizViewModel.moveToPrevios()
             updateQuestion()
-            Block_buttons(currentIndex)
+            Block_buttons(quizViewModel.currentIndex)
         }
+        quizViewModel.blockedQuestions.observe(this, Observer {
+            Block_buttons(quizViewModel.currentIndex) // Обновляем состояние кнопок
+        })
         updateQuestion()
 
     }

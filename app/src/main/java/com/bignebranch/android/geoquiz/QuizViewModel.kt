@@ -2,10 +2,13 @@ package com.bignebranch.android.geoquiz
 
 import android.content.ContentValues.TAG
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel // Добавляем import ViewModel
 import kotlin.math.abs
 
 private const val TAG = "QuizViewModel"
+
 
 class QuizViewModel : ViewModel() { // Наследуем QuizViewModel от ViewModel
    private val questionBank = listOf(
@@ -19,11 +22,26 @@ class QuizViewModel : ViewModel() { // Наследуем QuizViewModel от Vie
 
     var questionBankSize = questionBank.size
 
-    var blocked_questions = mutableListOf<Int>()
+    private val _blockedQuestions = MutableLiveData<MutableList<Int>>()
+    val blockedQuestions: LiveData<MutableList<Int>> = _blockedQuestions
 
-    var correct_answers = mutableListOf<Int>()
+    private val _correctAnswers = MutableLiveData<MutableList<Int>>()
+    val correctAnswers: LiveData<MutableList<Int>> = _correctAnswers
 
-    fun moveToPrevios{
+
+    init {
+        _blockedQuestions.value = mutableListOf()
+        _correctAnswers.value = mutableListOf()
+    }
+    var blocked_questions : MutableList<Int>
+        get() = _blockedQuestions.value!!
+        set(value) {_blockedQuestions.value = value}
+
+    var correct_answers : MutableList<Int>
+        get() = _correctAnswers.value!!
+        set(value) {_correctAnswers.value = value}
+
+    fun moveToPrevios(){
         if((currentIndex - 1) < 0) {
             currentIndex = questionBank.size - abs(currentIndex - 1)
         }
