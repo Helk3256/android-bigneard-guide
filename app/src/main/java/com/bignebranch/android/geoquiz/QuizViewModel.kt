@@ -19,6 +19,7 @@ class QuizViewModel : ViewModel() { // Наследуем QuizViewModel от Vie
         Question(R.string.question_americas, true),
         Question(R.string.question_asia, true))
     var currentIndex = 0
+    var isCheater = false
 
     var questionBankSize = questionBank.size
 
