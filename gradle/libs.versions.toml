@@ -10,6 +10,8 @@ lifecycle = "2.6.2" # Используйте более старую верси�
 material = "1.10.0"
 activity = "1.8.2"
 constraintlayout = "2.1.4"
+navigationFragmentKtx = "2.8.9"
+navigationUiKtx = "2.8.9"
 
 
 [libraries]
@@ -24,7 +26,9 @@ androidx-activity = { module = "androidx.activity:activity-ktx", version.ref = "
 
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" } # ViewModel
 androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" } # LiveData
-androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" } # runtime
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
+androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" } # runtime
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
